@@ -14,6 +14,10 @@ function addInCartMessage(title, price) {
     // добавьте в конец переменной message текст 'теперь в корзине!'
     // выведите переменную message в консоль
 
+    let message = productName + " за " + productPrice + " теперь в корзине!"; 
+
+    console.log(message);
+
     // Конец решения задания №1.1.
 
     return message;
@@ -23,6 +27,7 @@ function addInCartCountChange(value) {
 
     // Задание №1.2. Увеличение количества в корзине
     let oldValue = value;
+    let newValue = oldValue + 1;
 
     // создайте переменную newValue
     // присвойте ей значение oldValue
@@ -38,6 +43,9 @@ function addInCartSumChange(sum, delta) {
     let difference = delta;
 
     // Задание №1.3. Увеличение суммы в корзине
+
+    let newSum = oldSum + difference;
+    let newSumText = `${newSum} ₽`
 
     // создайте переменную newSum и присвойте ей сумму oldSum и difference
     // создайте переменную newSumText и присвойте ей результат склеивания переменной newSum и текста ' ₽'
