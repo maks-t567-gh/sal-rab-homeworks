@@ -17,38 +17,21 @@
 //     - title - название позиции
 //     - count - количество в заказе
 // например:
-// {
-//    "data": {
-//      "client": "Иван +7(987)65-43-210",
-//      "order": {
-//        "address": "ул. Ленина, дом 2, 4 подъезд, 5 этаж, кв. 53",
-//        "sum": 900
-//       },
-//       "goods": [
-//         {
-//           "title": "Пицца",
-//           "count": 2
-//         }
-//      ]
-//    }
-// }
-
 
 function sendRequest(name, phone, address, goods, sum) {
-    let data = {client, order: {address, sum}, goods: [title, count] };
+    
+    let data = {client: {}, order: {}, goods: []};
+    
+    data.client = `${name} ${phone}`;
+    data.order.address = `ул. ${address.street}, дом ${address.house}, ${address.entrance} подъезд, ${address.floor} этаж, кв. ${address.flat}`;   //'ул. Академика Королёва, дом 12, 1 подъезд, 15 этаж, кв. 253'
+    data.order.sum = sum;
 
     let countOfGoods = goods.length;
+    for (let i = 0; i < countOfGoods; i ++ ) {
+        data.goods.push({title:goods[i].title, count:goods[i].count});
+   }
 
-    for (let i = 0; i <= countOfGoods; i += 1) {
-        data.goods.push(goods[i].title);
-    }
-
-    //data.order.address = address;
-    //data.order.sum = name + phone + address + goods + sum;
-
-    data.client = `${name} ${phone}`;
-
-    let jsonData = JSON.stringify(data);
+    let jsonData = JSON.stringify({data});
 
     return jsonData;
 }
